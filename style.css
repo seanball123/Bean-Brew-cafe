@@ -220,7 +220,7 @@ p {
     .heading{
     display: flex;
     padding: 10px;
-    padding-left: 40px;
+    padding-left: 60px;
     text-align: right;
     text-decoration: none;
     gap: 50px;
