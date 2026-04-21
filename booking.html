@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="booking for Bean & Brew cafe">
+    <link rel="stylesheet" href="style.css">
+    <title>Coffee Booking</title>
+</head>
+
+<body>
+        <section>
+        <!-- loads the hamburger logo for the hamburger navigation-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Top right hamburger Navigation Menu -->
+        <div class="topnav">
+        <div id="myLinks">
+            <a href="index.html">Home</a>
+            <a href="aboutUs.html">About Us</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="menu.html">Menu</a>
+            <a href="booking.html">Booking</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <!-- Hamburger navigation bar -->
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+        </div>
+        <script>
+            function myFunction() {
+            var x = document.getElementById("myLinks");
+            x.style.display = x.style.display === "block" ? "none" : "block";
+            }
+        </script>
+    </section>
+
+    <section>
+    <div class="heading">
+        <h1>
+            Booking
+        </h1>
+    </div>
+    </section>
+
+    <div class="container">
+        <p> Enter your details into the booking form to book a table at the cafe.
+        </p>
+    </div>
+
+    <section> 
+    <!-- booking form -->
+    <div class="bookingForm">
+        <h2>Appointment Booking Form</h2>
+        <form id="appointmentForm">
+
+        <label for="name"> Full Name: </label>
+        <input type="text" id="name" />
+        <div id="nameError" class="error"></div>
+
+        <label for="email">Email: </label>
+        <input type="email" id="email" />
+        <div id="emailError" class="error"></div>
+
+        <label for="guests">Number of Guests: </label>
+        <input type="number" id="guests" />
+        <div id="guestError" class="error"></div>
+
+        <label for="date">Appointment Date: </label>
+        <input type="date" id="date" />
+        <div id="dateError" class="error"></div>
+
+        <label for="time">Appointment Time: </label>
+        <input type="time" id="time" />
+        <div id="timeError" class="error"></div>
+
+        <button type="submit">Submit</button>
+        <div id="formMessage"></div>
+        </form>
+    </div>
+    </section>
+
+    <section>
+    <!-- Navigation bar -->   
+    <nav>
+        <div class="navbarContainer">
+            <div class="buttonNav">
+            <a href="index.html">Home</a> 
+            </div>
+            <div class="buttonNav">
+            <a href="gallery.html">Gallery</a> 
+            </div>
+            <div class="buttonNav">
+            <a href="menu.html">Menu</a> 
+            </div>
+            <div class="buttonNav">
+            <a href="contact.html">Contact</a> 
+            </div>
+        </div>
+        </nav>
+    </section>
+
+    <section>
+        <div class="imageLogo">
+            <img src="images/coffeelogo.jpeg" alt="a cafe image" width="150" height="150">
+    </div>
+    </section>
+    
+    <section>
+        <div class="socialMedia">
+            <a href="https://www.instagram.com/cafecoolcake/" target="_blank">
+            <img src="images/instagram.png" alt="Instagram social media link">
+            </a>
+        </div>
+    </section>
+
+    <script>
+    /* JavaScript for form validation and submitting it*/
+
+    const form = document.getElementById('appointmentForm');
+    const message = document.getElementById('formMessage');
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        let valid = true;
+
+        // this is to clear previous errors
+        document.querySelectorAll('.error').forEach(el => el.textContent = '');
+        message.textContent = '';
+
+        // this is to get values (trim removes any white space the user has entered)
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const guests = document.getElementById('guests').value.trim();
+        const date = document.getElementById('date').value.trim();
+        const time = document.getElementById('time').value.trim();
+
+        // this is to validate the input
+        if (!name) {
+            document.getElementById('nameError').textContent = 'Name is required';
+            valid = false;
+        }
+
+        if (!email || !email.includes('@')) {
+            document.getElementById('emailError').textContent = 'Enter a valid email';
+            valid = false;
+        }
+
+        if (guests <= 0) {
+            document.getElementById('guestError').textContent = 'Number of guests must be greater than 0';
+            valid = false;
+        }
+
+
+        if (!date) {
+            document.getElementById('dateError').textContent = 'Date is required';
+            valid = false;
+        }
+
+        if (!time) {
+            document.getElementById('timeError').textContent = 'Time is required';
+            valid = false;
+        }
+
+        if (valid) {
+            message.textContent = 'Appointment successfully booked!';
+            message.className = 'success';
+            form.reset();
+        } else {
+            message.textContent = 'Please fix the errors above.';
+            message.className = 'error';
+        }
+    });
+</script>
+
+
+</body>
+</html>
